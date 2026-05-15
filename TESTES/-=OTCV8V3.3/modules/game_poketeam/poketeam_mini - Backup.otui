@@ -1,0 +1,63 @@
+SlotBarMini < UIWidget
+  size: 60 60
+  anchors.top: parent.top
+  anchors.left: parent.left
+  image-source: /images/game/pokebar/slotbar_mini
+  image-clip: 0 0 80 60
+  draggable: true
+  phantom: false
+  margin-left: 2
+  margin-top: 2
+  &dragLeave: 0
+  &moveSlot: true
+
+  $!first:
+    anchors.top: prev.bottom
+    margin-top: 2
+
+  $checked:
+    size: 60 60
+    image-clip: 0 0 80 60
+
+  $on:
+    image-clip: 0 60 80 60
+
+  UIWidget
+    id: image
+    size: 54 54
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    phantom: true
+    opacity: 1
+    margin-left: 3
+    image-fixed-ratio: true
+    image-smooth: true
+
+    $disabled:
+      opacity: 0.3
+
+    $checked:
+      size: 54 54
+
+  Panel
+    id: elements
+    width: 20
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    layout: verticalBox
+    &px: 20
+    margin: 0 0 0 -8
+
+    $checked:
+      width: 24
+      &px: 24
+      margin: 0 0 0 -10
+
+Panel
+  id: panelBar
+  size: 64 80
+  pos: 10 150
+  focusable: false
+  &currentMode: 2
+  &orientation: 2
+  &isEditingMode: false

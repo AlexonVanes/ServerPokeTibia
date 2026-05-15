@@ -1,0 +1,309 @@
+QuickSlotItem < UIItem
+  size: 24 24
+  image-source: /images/ui/item
+  font: verdana-11px-rounded
+  background-color: alpha
+  color: white
+  virtual: true
+  &selectable: true
+  &editable: false
+
+  $!on:
+    border: 0 alpha
+
+  $hover !on:
+    border: 1 white
+
+  $hover:
+    background-color: #ffffff65
+
+  $on:
+    border-width: 1
+
+OrderSlotItem < UIItem
+  size: 24 24
+  image-source: /images/ui/item
+  font: verdana-11px-rounded
+  background-color: alpha
+  color: white
+  virtual: true
+  &selectable: true
+  &editable: false
+
+  $!on:
+    border: 0 alpha
+
+  $hover !on:
+    border: 1 white
+
+  $hover:
+    background-color: #ffffff65
+
+  $on:
+    border-width: 1
+
+StatusIconTooltip < UIWindow
+  size: 150 118
+  image-source: /images/ui/tooltip/background_tooltip
+  focusable: false
+
+  UIWidget
+    id: icon
+    size: 25 25
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 22
+
+  Label
+    id: title
+    color: white
+    phantom: true
+    font: sono_medium_12
+    text-auto-resize: true
+    anchors.top: icon.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 4
+
+  UIWidget
+    id: separator
+    size: 128 1
+    image-source: /images/ui/tooltip/separator
+    anchors.top: title.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 8
+
+  UILabel
+    id: desc
+    font: sono_medium_10
+    color: #dfdfdf
+    phantom: true
+    text-align: center
+    text-wrap: true
+    text-vertical-auto-resize: true
+    anchors.top: separator.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 7
+    margin-left: 14
+    margin-right: 14
+
+PlayerBar < UIWindow
+  size: 480 82
+  image-source: /images/game/playerbar/default
+  focusable: false
+
+  anchors.horizontalCenter: parent.horizontalCenter
+  anchors.bottom: parent.bottom
+  margin-bottom: 67
+
+  UIWidget
+    id: leftContainer
+    size: 240 40
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-left: 38
+    margin-top: 40
+
+  UIWidget
+    id: blessIcon
+    size: 15 16
+    anchors.right: playerNameLabel.left
+    anchors.verticalCenter: playerNameLabel.verticalCenter
+    margin-right: 4
+    image-source: /modules/game_playerbar/images/icons/bless
+    opacity: 0.45
+
+  UIWidget
+    id: vipIcon
+    size: 15 16
+    anchors.left: playerNameLabel.right
+    anchors.verticalCenter: playerNameLabel.verticalCenter
+    margin-left: 3
+    image-source: /modules/game_playerbar/images/icons/vip
+    opacity: 0.45
+
+  Label-14px-Medium
+    id: playerNameLabel
+    text: 
+    color: white
+    font: sans-bold-16px-rounded
+    anchors.left: healthBar.left
+    anchors.bottom: healthBar.top
+    margin-bottom: 3
+    text-align: center
+    text-auto-resize: true
+
+  ProgressBar
+    id: healthBar
+    size: 145 12
+    anchors.left: leftContainer.left
+    anchors.top: leftContainer.top
+    margin-left: 2
+    margin-top: 8
+    background-color: #199954
+    border-radius: 9
+
+  UIWidget
+    id: iconHealth
+    size: 12 12
+    anchors.right: healthBar.left
+    anchors.verticalCenter: healthBar.verticalCenter
+    margin-right: 2
+    margin-top: 1
+    image-source: /images/game/playerbar/icon_xp_hp
+    image-clip: 0 0 16 16
+    image-color: #ff0000
+
+  UIWidget
+    id: pokeballs
+    size: 82 12
+    anchors.top: centerBall.bottom
+    anchors.horizontalCenter: centerBall.horizontalCenter
+    margin-top: 0
+    image-source: /images/game/playerbar/pokeballs
+    image-clip: 0 0 82 12
+    margin-left: 100
+    margin-top: -13
+
+  UIWidget
+    id: xpGroup
+    size: 320 14
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-left: 75
+    margin-top: 6
+
+    UIWidget
+      id: expBar
+      size: 220 8
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 52
+      image-source: /modules/game_playerbar/images/xpbar_base
+      clipping: true
+
+      UIWidget
+        id: xpFill
+        size: 0 8
+        anchors.left: parent.left
+        anchors.top: parent.top
+        image-source: /modules/game_playerbar/images/xpbar
+        image-clip: 0 0 161 8
+
+    Label-14px-Medium
+      id: lvlLabel
+      text: Nv.
+      anchors.right: expBar.left
+      anchors.verticalCenter: expBar.verticalCenter
+      margin-right: 6
+      text-auto-resize: true
+      text-stroke: 2 black
+
+    Label-14px-Medium
+      id: expPercentLabel
+      text: 0%
+      anchors.left: expBar.right
+      anchors.verticalCenter: expBar.verticalCenter
+      margin-left: 6
+      text-auto-resize: true
+      text-stroke: 2 black
+
+  UIWidget
+    id: iconExp
+    size: 0 0
+    phantom: true
+
+  UIWidget
+    id: centerBall
+    size: 80 80
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.verticalCenter
+    phantom: true
+
+  UIWidget
+    id: perfilBase
+    size: 58 58
+    anchors.horizontalCenter: centerBall.horizontalCenter
+    anchors.verticalCenter: centerBall.verticalCenter
+    margin-left: 6
+    margin-top: 9
+    image-source: /perfil/circle/base
+    phantom: true
+
+  UIWidget
+    id: perfilImage
+    size: 58 58
+    anchors.horizontalCenter: perfilBase.horizontalCenter
+    anchors.verticalCenter: perfilBase.verticalCenter
+    image-source: /perfil/circle/male/32
+    phantom: true
+
+  UIWidget
+    id: perfilStatus
+    size: 58 58
+    anchors.horizontalCenter: perfilBase.horizontalCenter
+    anchors.verticalCenter: perfilBase.verticalCenter
+    visible: false
+    phantom: true
+
+  UIWidget
+    id: perfilBorder
+    size: 75 75
+    anchors.horizontalCenter: perfilBase.horizontalCenter
+    anchors.verticalCenter: perfilBase.verticalCenter
+    image-source: /perfil/border/none
+    phantom: true
+
+  Panel
+    id: quickSlotsContainer
+    anchors.left: centerBall.right
+    anchors.verticalCenter: centerBall.verticalCenter
+    margin-left: 20
+    margin-top: 5
+    width: 170
+    height: 28
+
+    QuickSlotItem
+      id: quickSlot1
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+
+    QuickSlotItem
+      id: quickSlot2
+      anchors.left: prev.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 6
+
+    QuickSlotItem
+      id: quickSlot3
+      anchors.left: prev.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 6
+
+    QuickSlotItem
+      id: quickSlot4
+      anchors.left: prev.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 6
+
+    FingerSlot
+      id: slot11
+      anchors.left: prev.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 6
+
+  Panel
+    id: actionbarPanel
+    size: 628 51
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.top
+    margin-bottom: 8
+    visible: false
+    layout:
+      type: verticalBox
+      spacing: 5
+
+
+PlayerBar
+  id: playerBarWindow
+  visible: false
